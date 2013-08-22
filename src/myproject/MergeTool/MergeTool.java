@@ -1,14 +1,19 @@
+package myproject.MergeTool;
+
 import java.io.*;
 import java.util.*;
 
 
-public class Test {
+public class MergeTool {
 	
 	private ArrayList<String> array1 = new ArrayList<>();
 	private ArrayList<String> array2 = new ArrayList<>();
 	
+	private LinkedList<String> list1 = new LinkedList<>();
+	private LinkedList<String> list2 = new LinkedList<>();
 	
-	public Test(String file1, String file2) throws Exception{
+	
+	public MergeTool(File file1, File file2){
 		
 		try (
 				BufferedReader br1 = new BufferedReader(new FileReader(file1));
@@ -25,6 +30,17 @@ public class Test {
 
 	}
 	
+	public MergeTool(String str1, String str2){
+		
+		for (int i = 0; i < str1.length(); i++) {
+			array1.add(String.valueOf(str1.charAt(i)));
+		}
+
+		for (int i = 0; i < str2.length(); i++) {
+			array2.add(String.valueOf(str2.charAt(i)));
+		}
+
+	}	
 	
 	
 	public void compare() {
@@ -65,8 +81,7 @@ public class Test {
 		
 		
 		//build two string lists
-		LinkedList<String> list1 = new LinkedList<>();
-		LinkedList<String> list2 = new LinkedList<>();
+		
 
 		int x = array2.size();
 		int y = array1.size();
@@ -98,15 +113,6 @@ public class Test {
 			
 		} while (x != 0 || y != 0);
 		
-		
-		//result
-		for (String str : list1) {
-			System.out.println(str);
-		}
-		System.out.println();
-		for (String str : list2) {
-			System.out.println(str);
-		}
 	}
 	
 	
@@ -151,10 +157,15 @@ public class Test {
 		LEFT, UP, LEFT_UP
 	}
 
-	public static void main(String[] args) throws Exception{
-		String file1 = "testfiles/file1.txt";
-		String file2 = "testfiles/file2.txt";
-		new Test(file1, file2).compare();
+
+	public LinkedList<String> getList1() {
+		return list1;
 	}
+
+	public LinkedList<String> getList2() {
+		return list2;
+	}
+
+	
 
 }
