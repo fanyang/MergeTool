@@ -20,8 +20,8 @@ public class MergeToolTest {
 		mt.compare();
 		List<String> list1 = mt.getList1();
 		List<String> list2 = mt.getList2();
-		String[] arr1 = {"s", "-", "-", "u", "*n", "d", "a", "y"};
-		String[] arr2 = {"s", "+a", "+t", "u", "*r", "d", "a", "y"};
+		String[] arr1 = {"s", "", "", "u", "n", "d", "a", "y"};
+		String[] arr2 = {"s", "a", "t", "u", "r", "d", "a", "y"};
 		List<String> resultList1 = Arrays.asList(arr1);
 		List<String> resultList2 = Arrays.asList(arr2);
 		
@@ -36,8 +36,8 @@ public class MergeToolTest {
 		mt.compare();
 		List<String> list1 = mt.getList1();
 		List<String> list2 = mt.getList2();
-		String[] arr1 = {"s", "-", "-", "u", "*n", "d", "a", "y"};
-		String[] arr2 = {"s", "+a", "+t", "u", "*r", "d", "a", "y"};
+		String[] arr1 = {"s", "", "", "u", "n", "d", "a", "y"};
+		String[] arr2 = {"s", "a", "t", "u", "r", "d", "a", "y"};
 		List<String> resultList1 = Arrays.asList(arr1);
 		List<String> resultList2 = Arrays.asList(arr2);
 		

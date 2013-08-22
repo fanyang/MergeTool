@@ -11,6 +11,7 @@ public class MergeTool {
 	
 	private LinkedList<String> list1 = new LinkedList<>();
 	private LinkedList<String> list2 = new LinkedList<>();
+	private LinkedList<ChangeState> stateList = new LinkedList<>();
 	
 	
 	public MergeTool(File file1, File file2){
@@ -29,6 +30,7 @@ public class MergeTool {
 		}
 
 	}
+	
 	
 	public MergeTool(String str1, String str2){
 		
@@ -80,7 +82,7 @@ public class MergeTool {
 		}
 		
 		
-		//build two string lists
+		//build state lists
 		
 
 		int x = array2.size();
@@ -91,19 +93,23 @@ public class MergeTool {
 			
 			switch (currentNode.getLastPosition()) {
 			case UP:
-				list1.push("+" + array1.get(x-1));
-				list2.push("-");
+				list1.push(array1.get(x-1));
+				list2.push("");
+				stateList.push(ChangeState.DELETE);
 				y--;
 				break;
 			case LEFT:
-				list1.push("-");
-				list2.push("+" + array2.get(x-1));
+				list1.push("");
+				list2.push(array2.get(x-1));
+				stateList.push(ChangeState.INSERT);
 				x--;
 				break;
 			case LEFT_UP:
-				String star = array1.get(y-1).equals(array2.get(x-1)) ? "" : "*";
-				list1.push(star + array1.get(y-1));
-				list2.push(star + array2.get(x-1));
+				stateList.push(array1.get(y-1).equals(array2.get(x-1)) 
+						? ChangeState.UNMODIFIED
+						: ChangeState.UPDATE);
+				list1.push(array1.get(y-1));
+				list2.push(array2.get(x-1));
 				x--;
 				y--;
 				break;
@@ -158,14 +164,16 @@ public class MergeTool {
 	}
 
 
-	public LinkedList<String> getList1() {
+	public List<String> getList1() {
 		return list1;
 	}
 
-	public LinkedList<String> getList2() {
+	public List<String> getList2() {
 		return list2;
 	}
 
-	
+	public List<ChangeState> getStateList() {
+		return stateList;
+	}
 
 }
