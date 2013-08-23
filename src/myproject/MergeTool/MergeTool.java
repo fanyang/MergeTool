@@ -175,5 +175,15 @@ public class MergeTool {
 	public List<ChangeState> getStateList() {
 		return stateList;
 	}
+	
+	public int distance() {
+		int count = 0;
+		
+		for (ChangeState cs : this.stateList) {
+			if (cs != ChangeState.UNMODIFIED) count++;
+		}
+		
+		return count;
+	}
 
 }

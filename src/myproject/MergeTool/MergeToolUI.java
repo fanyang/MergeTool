@@ -7,6 +7,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -55,6 +56,9 @@ public class MergeToolUI extends JFrame {
 				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS
 				);
 		
+		JScrollBar scrollBar1 = scrollPane1.getVerticalScrollBar();		
+		scrollPane2.setVerticalScrollBar(scrollBar1);
+		
 		scrollPane1.setViewportView(textArea1);
 		scrollPane2.setViewportView(textArea2);
 		
@@ -97,8 +101,26 @@ public class MergeToolUI extends JFrame {
 				+ "  Delete=" + delete);
 		
 		
+		
 		List<String> list1 = mt.getList1();
-
+		for (int i = 0; i < list1.size(); i++) {
+			String str = "";
+			switch (stateList.get(i)) {
+			case UPDATE:
+				str = "* ";
+				break;
+			case INSERT:
+				str = "+ ";
+				break;
+			case DELETE:
+				str = "- ";
+				break;
+			default:
+				str = "   ";
+				break;
+			}
+			textArea1.append(str + list1.get(i) + "\n");
+		}
 
 		List<String> list2 = mt.getList2();
 		for (int i = 0; i < list2.size(); i++) {
@@ -118,25 +140,6 @@ public class MergeToolUI extends JFrame {
 				break;
 			}
 			textArea2.append(str + list2.get(i) + "\n");
-		}
-		
-				for (int i = 0; i < list1.size(); i++) {
-			String str = "";
-			switch (stateList.get(i)) {
-			case UPDATE:
-				str = "* ";
-				break;
-			case INSERT:
-				str = "+ ";
-				break;
-			case DELETE:
-				str = "- ";
-				break;
-			default:
-				str = "   ";
-				break;
-			}
-			textArea1.append(str + list1.get(i) + "\n");
 		}
 		
 	}
