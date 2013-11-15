@@ -1,4 +1,4 @@
-package myproject.MergeTool;
+package tool.textcomparator;
 
 public enum ChangeState {
 	UNMODIFIED,

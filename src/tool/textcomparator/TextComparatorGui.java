@@ -1,4 +1,4 @@
-package myproject.MergeTool;
+package tool.textcomparator;
 
 import java.awt.BorderLayout;
 import java.util.List;
@@ -12,9 +12,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 
-public class MergeToolUI extends JFrame {
+public class TextComparatorGui extends JFrame {
 	
-	private MergeTool mt;
+	private TextComparator tc;
 	
 	private JLabel jLable1;
 	private JPanel panel1;
@@ -24,10 +24,10 @@ public class MergeToolUI extends JFrame {
 	private JTextArea textArea1;
 	private JTextArea textArea2;
 
-	public MergeToolUI (MergeTool mt) {
+	public TextComparatorGui (TextComparator tc) {
 		
-		super("Merge Tool");
-		this.mt = mt;
+		super("Text Comparator");
+		this.tc = tc;
 		
 		initComponent();
 		
@@ -82,7 +82,7 @@ public class MergeToolUI extends JFrame {
 	
 	private void displayData() {
 		
-		List<ChangeState> stateList = mt.getStateList();
+		List<ChangeState> stateList = tc.getStateList();
 		
 		int update = 0;
 		int insert = 0;
@@ -102,7 +102,7 @@ public class MergeToolUI extends JFrame {
 		
 		
 		
-		List<String> list1 = mt.getList1();
+		List<String> list1 = tc.getList1();
 		for (int i = 0; i < list1.size(); i++) {
 			String str = "";
 			switch (stateList.get(i)) {
@@ -122,7 +122,7 @@ public class MergeToolUI extends JFrame {
 			textArea1.append(str + list1.get(i) + "\n");
 		}
 
-		List<String> list2 = mt.getList2();
+		List<String> list2 = tc.getList2();
 		for (int i = 0; i < list2.size(); i++) {
 			String str = "";
 			switch (stateList.get(i)) {

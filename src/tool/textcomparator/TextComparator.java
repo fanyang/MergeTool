@@ -1,10 +1,10 @@
-package myproject.MergeTool;
+package tool.textcomparator;
 
 import java.io.*;
 import java.util.*;
 
 
-public class MergeTool {
+public class TextComparator {
 	
 	private ArrayList<String> array1 = new ArrayList<>();
 	private ArrayList<String> array2 = new ArrayList<>();
@@ -14,7 +14,7 @@ public class MergeTool {
 	private LinkedList<ChangeState> stateList = new LinkedList<>();
 	
 	
-	public MergeTool(File file1, File file2){
+	public TextComparator(File file1, File file2){
 		
 		try (
 				BufferedReader br1 = new BufferedReader(new FileReader(file1));
@@ -32,7 +32,7 @@ public class MergeTool {
 	}
 	
 	
-	public MergeTool(String str1, String str2){
+	public TextComparator(String str1, String str2){
 		
 		for (int i = 0; i < str1.length(); i++) {
 			array1.add(String.valueOf(str1.charAt(i)));
@@ -172,6 +172,10 @@ public class MergeTool {
 		return list2;
 	}
 
+	/**
+	 * 
+	 * @return the comparison result.
+	 */
 	public List<ChangeState> getStateList() {
 		return stateList;
 	}

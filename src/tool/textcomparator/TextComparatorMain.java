@@ -1,10 +1,10 @@
-package myproject.MergeTool;
+package tool.textcomparator;
 
 import java.io.File;
 
 import org.apache.commons.cli.*;
 
-public class MergeToolMain {
+public class TextComparatorMain {
 
 	public static void main(String[] args) {
 		
@@ -26,7 +26,7 @@ public class MergeToolMain {
         CommandLine commandLine = null;
         
         HelpFormatter formatter = new HelpFormatter();
-        String formatstr = "java MergeToolMain [option] [target1 target2]";
+        String formatstr = "java TextComparatorMain [option] [target1 target2]";
         
         try {
         	commandLine = parser.parse( options, args );
@@ -43,24 +43,24 @@ public class MergeToolMain {
         
         String str1, str2;
 		File file1, file2;
-		MergeTool mt = null;
+		TextComparator tc = null;
         
         if (commandLine.hasOption("s")) {
         	String[] strings = commandLine.getOptionValues("s");
         	str1 = strings[0];
         	str2 = strings[1];
-        	mt = new MergeTool(str1, str2);
+        	tc = new TextComparator(str1, str2);
         }
 
         if (commandLine.hasOption("f")) {
         	String[] strings = commandLine.getOptionValues("f");
         	file1 = new File(strings[0]);
         	file2 = new File(strings[1]);
-        	mt = new MergeTool(file1, file2);
+        	tc = new TextComparator(file1, file2);
         }
 		
-		mt.compare();
-		new MergeToolUI(mt);
+		tc.compare();
+		new TextComparatorGui(tc);
 	}
 
 }
