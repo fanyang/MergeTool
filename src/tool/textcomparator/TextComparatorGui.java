@@ -3,17 +3,20 @@ package tool.textcomparator;
 import java.awt.BorderLayout;
 import java.util.List;
 
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 
 public class TextComparatorGui extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private TextComparator tc;
 	
 	private JLabel jLable1;
